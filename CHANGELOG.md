@@ -7,27 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2025-12-26
+
+### Changed
+- Updated documentation and project metadata
+
+### Fixed
+- Minor bug fixes and improvements
+
 ## [0.1.0] - 2025-12-26
 
 ### Added
 - Initial release of fastapi-autowire
 - Spring-like dependency injection and autowiring for FastAPI applications
-- Core dependency injection container with automatic dependency resolution
-- Support for singleton and transient bean scopes
-- Lifecycle management with startup and shutdown hooks
-- Type-safe dependency resolution using Python type hints
-- Application context management for organizing and accessing beans
+- Semantic component decorators: `@service`, `@repository`, `@component`, `@configuration`, and `@provider`
+- Type-safe dependency injection using `Autowired[T]` generic type
+- Automatic dependency resolution with topological sorting
+- Circular dependency detection at startup
+- Interface-based component registration with `as_type` parameter
+- Lifecycle management with `post_construct()` and `shutdown()` hooks
+- Application context (`AppContext`) for managing component instances
+- Singleton scope for all registered components
+- FastAPI lifespan integration for automatic startup and shutdown
+- Constructor injection for component dependencies
+- Route handler injection via FastAPI's `Depends()` mechanism
+- Built-in logging system with dedicated `fastapi_autowire` logger
 - Comprehensive test suite covering integration, lifecycle, and resolver functionality
 - Full type annotations with `py.typed` marker for type checking support
 - Support for Python 3.9, 3.10, 3.11, and 3.12
-- Documentation in README.md with usage examples
+- Complete documentation in README.md with examples and diagrams
 
 ### Features
-- **Dependency Registry**: Central registry for managing application dependencies
-- **Automatic Resolution**: Resolves dependencies automatically based on type annotations
-- **Lifecycle Hooks**: Support for initialization and cleanup operations
-- **FastAPI Integration**: Seamless integration with FastAPI's dependency injection system
-- **Type Safety**: Full type hints and mypy compatibility
+- **Semantic Decorators**: Use `@service`, `@repository`, `@component`, `@configuration`, and `@provider` for clear code organization
+- **Automatic Dependency Resolution**: Dependencies are resolved automatically based on type hints using topological sorting
+- **Type-Safe Autowiring**: Leverage `Autowired[T]` generic for compile-time type checking
+- **Circular Dependency Detection**: Prevents circular dependencies and provides clear error messages
+- **Interface-Based Registration**: Register concrete implementations against abstract base classes
+- **Lifecycle Hooks**: Support for `post_construct()` initialization and `shutdown()`/`close()` cleanup methods
+- **FastAPI Integration**: Seamless integration with FastAPI's dependency injection via custom lifespan manager
+- **Application Context**: Centralized container for accessing registered components at runtime
+- **Zero Runtime Overhead**: O(1) component lookup during request handling (singletons pre-instantiated at startup)
+- **Debugging Support**: Built-in logging with configurable levels for troubleshooting dependency resolution
 
-[Unreleased]: https://github.com/yourusername/fastapi-autowire/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/yourusername/fastapi-autowire/releases/tag/v0.1.0
+[Unreleased]: https://github.com/leoroop/fastapi-autowire/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/leoroop/fastapi-autowire/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/leoroop/fastapi-autowire/releases/tag/v0.1.0

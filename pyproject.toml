@@ -1,6 +1,6 @@
 [project]
 name = "fastapi-autowire"
-version = "0.1.0"
+version = "0.1.1"
 description = "Spring-like Dependency Injection and Autowiring for FastAPI"
 readme = "README.md"
 requires-python = ">=3.9"
