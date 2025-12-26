@@ -53,7 +53,8 @@ def resolve_dependencies() -> List[Any]:
                 continue
 
             actual_type = param_type
-            logger.debug(f"  -> Found dependency '{param_name}' of type {actual_type.__name__}")
+            type_display_name = actual_type.__name__ if hasattr(actual_type, "__name__") else str(actual_type)
+            logger.debug(f"  -> Found dependency '{param_name}' of type {type_display_name}")
 
             if get_origin(param_type) is Annotated:
                 actual_type = get_args(param_type)[0]
